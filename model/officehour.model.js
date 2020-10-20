@@ -26,10 +26,14 @@ const QuestionSchema = new mongoose.Schema({
     },
     subscribers: {
         type: Array,
-        required: true
+        default: []
     },
     subscriber_count: {
         type: Number,
+        default: 0
+    },
+    office_hour_id: {
+        type: String,
         required: true
     }
 })

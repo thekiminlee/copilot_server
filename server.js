@@ -14,6 +14,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
 // Route imports and config
+const api = require('./routes/api.route');
+
+app.use('/api', api);
 
 // Database connection
 mongoose.connect(process.env.DB_URI, {
@@ -27,5 +30,5 @@ mongoose.connect(process.env.DB_URI, {
 
 // Server start
 app.listen(port, () => {
-	console.log("Server listening on PORT:%s", port);
+	console.log("Server listening on PORT: %s", port);
 });
