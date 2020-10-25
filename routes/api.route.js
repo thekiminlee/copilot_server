@@ -79,7 +79,7 @@ router.route("/officehour/questions/:id").get(function (req, res) {
 
 // PATCH
 /*
-    Updates {subscribers} array and {subscriber_count} of a question :id
+    Updates {subscribers} array and {subscriber_count} of a question {id}
 */
 router.route("/question/:id/:subscriber").patch(function (req, res) {
     officeModel.Question.findByIdAndUpdate(req.params.id, 
