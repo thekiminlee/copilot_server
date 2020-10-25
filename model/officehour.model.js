@@ -36,7 +36,7 @@ const QuestionSchema = new mongoose.Schema({
         type: String,
         required: true
     }
-})
+}, {timestamps: true})
 
 exports.OfficeHour = mongoose.model('OfficeHour', OfficeHourSchema);
 exports.Question = mongoose.model('Question', QuestionSchema);

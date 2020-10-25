@@ -21,9 +21,9 @@ router.route("/officehour").post(function (req, res) {
 
 /*
     inputs:
-        - question {title} (String)
-        - question {author} (String)
-        - author {email} (String)
+        - question {question} (String)
+        - author {author} (String)
+        - email {email} (String)
         - assoicated {office_hour_id} (String)
 */
 router.route("/officehour/:id").post(function (req, res) {
@@ -40,8 +40,8 @@ router.route("/officehour/:id").post(function (req, res) {
 /*
     Returns a list of all the office hours
 */
-router.route("/officehour").get(function (req, res) {
-    officeModel.OfficeHour.find(function(err, officehours) {
+router.route("/officehours").get(function (req, res) {
+    officeModel.OfficeHour.find().sort('date').exec(function(err, officehours) {
         if (err) {
             res.status(404).send("Office hour cannot be found. \n" + err)
         } else {
@@ -66,8 +66,8 @@ router.route("/officehour/:id").get(function (req, res) {
 /*
     Returns a list of questions associatd with office hour :id
 */
-router.route("/officehour/:id/questions").get(function (req, res) {
-    officeModel.Question.find({office_hour_id: req.params.id}, function(err, questions) {
+router.route("/officehour/questions/:id").get(function (req, res) {
+    officeModel.Question.find({office_hour_id: req.params.id}).sort('-createdAt').exec(function(err, questions) {
         if (err) {
             res.status(404).send("Office hour cannot be found. \n" + err)
         } else {
