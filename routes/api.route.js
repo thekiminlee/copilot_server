@@ -14,7 +14,7 @@ router.route("/officehour").post(function (req, res) {
   officeHour
     .save()
     .then((response) => {
-      res.status(200).send("Office hour saved.\n" + response)
+      res.status(200).send(response)
     })
     .catch((err) => {
       console.log(err)
